@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h3 class="mt-3 text-center">Your Trackings</h3>
+    {% include 'partials/_alerts.html' %}
+    <ul class="list-unstyled mt-5">
+      {% for product in products %}
+      <li class="media">
+        <img src="{{ product.product_image }}" class="mr-3" alt="{{ product.name }}" />
+        <div class="media-body">
+          <a href="{{ product.product_url }}" target="_blank">
+            <h5 class="mt-0 mb-1">{{ product.name }}</h5>
+          </a>
+          
+          <p>Product Price: <strong class="text-danger">₹ {{ product.product_price }}</strong></p>
+          <p>Target Price: ₹ <strong class="text-success">{{ product.target_price }}</strong></p>
+        </div>
+      </li>
+      {% empty %}
+      <h2>No products added</h2>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
+
+    
